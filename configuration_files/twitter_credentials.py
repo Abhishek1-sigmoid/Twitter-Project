@@ -1,9 +1,13 @@
+from dotenv import load_dotenv
+import os
+
 class TwitterInfo:
     def __init__(self):
-        self.__consumer_key = "kXFZLDHJUWcJNPfOKW1rckiZe"
-        self.__consumer_secret = "W10vUgfv1Aomy0qFYyUasJTUgDVy3oXQYlbm4iA79tFDJCdtAM"
-        self.__access_token = "1511229021266141185-gTF3vgn8K9bqYAeRSgd2QRk8NfMQYB"
-        self.__access_token_secret = "QF9Qilit7UmyCYJSr5uYrM0PITsJT6bB5ZtW9yCMkl4oN"
+        load_dotenv()
+        self.__consumer_key = os.getenv('CONSUMER_KEY')
+        self.__consumer_secret = os.getenv('CONSUMER_SECRET')
+        self.__access_token = os.getenv('ACCESS_TOKEN')
+        self.__access_token_secret = os.getenv('ACCESS_TOKEN_SECRET')
 
     def get_consumer_key(self):
         return self.__consumer_key
@@ -16,3 +20,4 @@ class TwitterInfo:
 
     def get_access_token_secret_key(self):
         return self.__access_token_secret
+
