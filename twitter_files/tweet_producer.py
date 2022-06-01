@@ -1,6 +1,10 @@
 import json
 from datetime import datetime
 from tweepy import Stream
+import sys
+
+sys.path.append('../')
+
 from configuration_files.kafka_details import KafkaInfo
 from configuration_files.twitter_credentials import TwitterInfo
 from utils.get_country_name import get_country_name

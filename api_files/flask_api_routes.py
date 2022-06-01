@@ -1,5 +1,7 @@
-from flask import Flask, jsonify, request
+import sys
+from flask import Flask, jsonify
 
+sys.path.append('../')
 
 from queries.donations import donations_per_country
 from queries.precautionary_measures import precautionary_measures
@@ -9,6 +11,7 @@ from queries.tweets_per_country import tweets_per_country
 from queries.tweets_per_country_daily import tweets_per_country_daily_basis
 
 app = Flask('my app')
+
 
 @app.route('/api/tweets_per_country', methods=['GET'])
 def api_tweets_per_country():

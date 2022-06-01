@@ -1,3 +1,7 @@
+import sys
+
+sys.path.append('../')
+
 from configuration_files.kafka_details import KafkaInfo
 
 def delete_topics():

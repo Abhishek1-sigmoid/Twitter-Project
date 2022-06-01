@@ -1,3 +1,7 @@
+import sys
+
+sys.path.append('../')
+
 from configuration_files.mongodb_connection import DatabaseInfo
 
 
