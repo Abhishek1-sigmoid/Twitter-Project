@@ -1,8 +1,10 @@
+import json
 import sys
 from flask import Flask, jsonify
 
 sys.path.append('../')
 
+from queries.impacted_country import impacted_country_weekly
 from queries.donations import donations_per_country
 from queries.precautionary_measures import precautionary_measures
 from queries.top_hundred_per_country import top_hundred_per_country
@@ -47,6 +49,11 @@ def api_precautionary_measures():
 def api_donations():
     data = donations_per_country()
     return jsonify(data)
+
+@app.route('/api/impacted_country', methods=['GET'])
+def api_impacted_country():
+    data = impacted_country_weekly()
+    return json.dumps(data)
 
 
 if __name__ == '__main__':
