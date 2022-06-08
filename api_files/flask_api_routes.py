@@ -4,6 +4,8 @@ from flask import Flask, jsonify
 
 sys.path.append('../')
 
+from queries.age_categorisation import age_categorisation
+from queries.economy_impact import economy_impact
 from queries.impacted_country import impacted_country_weekly
 from queries.donations import donations_per_country
 from queries.precautionary_measures import precautionary_measures
@@ -50,10 +52,23 @@ def api_donations():
     data = donations_per_country()
     return jsonify(data)
 
+
 @app.route('/api/impacted_country', methods=['GET'])
 def api_impacted_country():
     data = impacted_country_weekly()
     return json.dumps(data)
+
+
+@app.route('/api/economy_impact', methods=['GET'])
+def api_economy_impact():
+    data = economy_impact()
+    return jsonify(data)
+
+
+@app.route('/api/age_categorisation', methods=['GET'])
+def api_age_categorisation():
+    data = age_categorisation()
+    return jsonify(data)
 
 
 if __name__ == '__main__':
