@@ -16,7 +16,7 @@ def impacted_country_weekly():
     df['date'] = pd.to_datetime(df['date'], errors='coerce')
     week_number = df['date'].dt.week
     df['week'] = week_number
-    new_df = df[['date', 'week', 'location', 'total_cases']].copy()
+    new_df = df[['date', 'week', 'location', 'new_cases']].copy()
     new_df = new_df.dropna()
     result = {}
     for index, row in new_df.iterrows():
@@ -24,7 +24,7 @@ def impacted_country_weekly():
         start_date, end_date = get_date_range_from_week(2022, curr_week)
         key = str(start_date) + " to " + str(end_date)
         country = row['location']
-        cases = row['total_cases']
+        cases = row['new_cases']
         if key in result:
             val = result[key]
             if country in val:
