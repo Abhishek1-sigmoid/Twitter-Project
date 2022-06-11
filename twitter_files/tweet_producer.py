@@ -8,6 +8,7 @@ sys.path.append('../')
 from configuration_files.kafka_details import KafkaInfo
 from configuration_files.twitter_credentials import TwitterInfo
 from utils.get_country_name import get_country_name
+from utils.data_security import md5_hashing
 
 twitter_details = TwitterInfo()
 kafka_details = KafkaInfo()
@@ -26,7 +27,7 @@ class Listener(Stream):
         info['created_at'] = new_datetime
         info['location'] = get_country_name(data['user']['location'])
         info['name'] = data['user']['name']
-        info['followers_count'] = data['user']['followers_count']
+        info['followers_count'] = md5_hashing(data['user']['followers_count'])
         info['retweet_count'] = data['retweet_count']
         print(info)
         print(count)
