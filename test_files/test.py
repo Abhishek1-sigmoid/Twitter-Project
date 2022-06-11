@@ -34,6 +34,18 @@ class TestApis(unittest.TestCase):
         response = requests.get('http://127.0.0.1:5000/api/donations')
         assert response.status_code == 200
 
+    def test_api_impacted_country(self):
+        response = requests.get('http://127.0.0.1:5000/api/impacted_country')
+        assert response.status_code == 200
+
+    def test_api_economy_impact(self):
+        response = requests.get('http://127.0.0.1:5000/api/economy_impact')
+        assert response.status_code == 200
+
+    def test_api_age_categorisation(self):
+        response = requests.get('http://127.0.0.1:5000/api/age_categorisation')
+        assert response.status_code == 200
+
 
 if __name__ == '__main__':
     unittest.main()
